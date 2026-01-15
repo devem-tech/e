@@ -16,7 +16,7 @@ const (
 )
 
 // selfPkg stores the package path to filter out internal library frames from the stack trace.
-var selfPkg = reflect.TypeOf(withStack{}).PkgPath() + "."
+var selfPkg = reflect.TypeFor[withStack]().PkgPath() + "."
 
 // Frame represents a single stack frame with function name, file path, and line number.
 type Frame struct {

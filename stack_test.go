@@ -95,9 +95,7 @@ func TestCallersFilter(t *testing.T) {
 func BenchmarkW(b *testing.B) {
 	err := errors.New("error")
 
-	b.ResetTimer()
-
-	for range b.N {
+	for b.Loop() {
 		_ = e.W(err)
 	}
 }
