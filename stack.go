@@ -84,6 +84,13 @@ func (w *withStack) Stack() []Frame {
 	return frames
 }
 
+// StackTrace returns the program counters for the stack frames.
+// It implements the interface expected by Sentry and other error tracking tools
+// to automatically capture and symbolicate stack traces.
+func (w *withStack) StackTrace() []uintptr {
+	return w.pcs
+}
+
 // W (Wrap) attaches a stack trace to the error if it doesn't already have one.
 func W(err error) error {
 	if err == nil {
